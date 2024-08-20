@@ -145,7 +145,9 @@ int _main(struct thread *td) {
 
   initSysUtil();
 
-  printf_notification("Running FTP server");
+  char fw_version[6] = {0};
+  get_firmware_string(fw_version);
+  printf_notification("Fan Threshold Set to %i°C/%i°F!\nPS4 Firmware %s", THRESHOLDTEMP, (int)fahrenheit, fw_version);
 
   int ret = get_ip_address(ip_address);
   if (ret >= 0) {
